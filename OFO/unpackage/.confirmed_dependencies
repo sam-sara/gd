@@ -1,0 +1,10 @@
+{
+	"index.html": {
+		"resources": [
+			"maps_map_sub.html"
+		],
+		"refer": [
+			"maps_map_sub.html"
+		]
+	}
+}

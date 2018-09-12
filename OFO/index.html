@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	function plusReady(){
+      	    plus.screen.lockOrientation('portrait-primary');
+var map=null
+ditu1()
+
+      	}
+      	if (window.plus) {
+      	    plusReady()
+      	} else{
+      	    document.addEventListener('plusready',plusReady,false);
+      	}
+   	function ditu1(){
+   		//创建地图
+   		 map=new plus.maps.Map('ditu');
+   		//设置缩放等级
+   		map.setZoom(16);
+   		//获取用户位置
+   		map.showUserLocation(true);
+   		//回调方法返回获取道德状态state与定位点point
+   		  map.getUserLocation( function(state, point){
+   		  		//系统打印经纬度
+		        console.log(JSON.stringify(point));
+		        
+		        //locationPos = point;不知道干嘛的
+		        
+		       // center = new plus.maps.Point(108.903271, 34.2337);
+		       //创建(经度，纬度)的POINTER,center3
+		     	  var center=new plus.maps.Point(point.longitude,point.latitude)
+		       
+		        //设置地图中心点
+		        map.setCenter(center);
+		        //在周围设置图标 "latitude":34.2337,"longitude":108.903271,
+		        //
+		        var bike1 = new plus.maps.Point(point.longitude+0.0042, point.latitude+0.0053);
+		        var bike1Icon = new plus.maps.Marker(bike1);
+		        bike1Icon.setIcon('dingwei.png');
+		        var bubble = new plus.maps.Bubble("打造最好的HTML5移动开发工具");
+		        bike1Icon.setBubble(bubble);
+		        map.addOverlay(bike1Icon);
+		        
+		       var ww=parseFloat(Math.random());alert(ww)
+		       
+		        for(i=0;i<14;i++){
+		        	 var bike1 = new plus.maps.Point(point.longitude - 0.0041, point.latitude - 0.0033);
+		        var bike1Icon = new plus.maps.Marker(bike1);
+		        bike1Icon.setIcon('dingwei.png');
+		        var bubble = new plus.maps.Bubble("打造最好的HTML5移动开发工具");
+		        bike1Icon.setBubble(bubble);
+		        map.addOverlay(bike1Icon);
+		        }
+		    });
+   	}
+ 
+   function userLocation2(){
+   	
+	map.showUserLocation( true );
+	map.getUserLocation(function(state,pos){
+		if(0==state){
+			map.setCenter(pos);
+		}
+	});
+}
+    </script>
+</head>
+<body>
+	<div id='ditu'>
+		定位
+	</div>
+	<button onclick="userLocation2()">定位</button>
+</body>
+
+<style type="text/css">
+*{
+margin: 0;padding: 0;
+}
+html,body{
+	width: 100%;height: 100%;
+}
+	#ditu{
+		background: wheat;width: 100%;height: 90%;
+	}
+	
+</style>
+</html>

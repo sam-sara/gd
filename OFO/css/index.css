@@ -1,0 +1,10 @@
+body{
+	background-image: url(../img/21228ed4b31c8701ad916c202e7f9e2f0608ffa6.jpg.png);
+	background-size:100% ;
+}
+.zong{
+	position: absolute;bottom: 30px;width: 100%;
+}
+.zong>div{
+	float: left;margin: 1.5%;color: white;height: 50px;width: 45%;background: red;text-align: center;line-height: 50px;background-color: rgba(0,0,0,0.5)
+}
