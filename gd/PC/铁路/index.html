@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		　
+		<meta name="eqMobileViewport" content="width=320,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<link rel="stylesheet" type="text/css" href="css/media.css" />
+	
+	<body>
+		<span id='title'>广东铁路购票系统</span>
+	<!-- 	<div class="bg">
+
+			<img src="img/ChMkJ1bKw_-IV5CMABcE4_6KLcMAALG_wIUxegAFwT7971.jpg">
+		</div> -->
+		<div class="left_hz ">
+				<div id='xianshi'>
+						<span>目的地</span>
+				</div>
+				<div id='zbcs'>
+						<p>周边城市</p>
+						<ul id="cslb">
+							
+						</ul>
+				</div>
+				<div id='sousuo'>
+					<p style="display: block;">请输入车站简称(如<b>上海</b>)简称<b>SH</b></p>
+					<input type="text"style="height: 2rem;width: 76%;margin: 0 auto;color: black;">
+					<div class="hx">
+						
+						<ul id="zmlb">
+							
+						</ul>
+						<div>
+							wew
+						</div>
+					</div>	
+
+				</div>
+	</div>
+		<!-- 大的 -->
+		<div class="right_hz visible-lg visible-md">
+		
+			<div class="input-group">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button">
+						出发地
+					</button>
+				</span>
+				<input type="text" class="form-control">
+			</div><!-- /input-group -->
+			<div class="input-group">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button">
+						目的地
+					</button>
+				</span>
+				<input type="text" class="form-control">
+			</div><!-- /input-group -->
+			<div class="input-group">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button">
+						出发时间
+					</button>
+				</span>
+				<input type="text" class="form-control">
+			</div><!-- /input-group -->
+			<div class="input-group">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button">
+					班次
+					</button>
+				</span>
+				<input type="text" class="form-control">
+			</div><!-- /input-group -->
+			
+	<button type="button" class="btn btn-success"style="width:50% !important;float: left;position: absolute;bottom: 0;">查询</button>
+  <button type="button" class="btn btn-default"style="width:50% !important;float: left;position: absolute;bottom: 0;right: 0;">清空</button>
+		</div>
+<!-- 小的 -->
+		<div class="right_hz hidden-lg hidden-md">
+			23
+			
+		</div>
+	</body>
+<script type="text/javascript">
+window.onload=function(){
+	function ajaxJson(){
+		var xmlhttp;
+		if(window.XMLHttpRequest){
+			xmlhttp=new XMLHttpRequest();
+		}else{
+			xmlhttp=new ActiveXObject()
+		}
+		xmlhttp.onreadystatechange=function(){
+			if(xmlhttp.readyState==4&&xmlhttp.status==200){
+			//console.log(xmlhttp.responseText)
+		cjli(xmlhttp)
+			
+			}else{
+				
+			}
+		}
+		xmlhttp.open("GET",'js/GD.json',true);
+		xmlhttp.send()
+	}
+	ajaxJson()
+	
+}
+function cjli(xmlhttp){
+	var data=JSON.parse(xmlhttp.responseText)
+	var cslb=document.getElementById('cslb');
+	var zmlb=document.getElementById('zmlb');
+	var cslength=data.c.length;
+	var zmlength=data.zm.length
+	for(i=0;i<cslength;i++){
+		var new_li=document.createElement('li');
+		new_li.innerHTML="<a href='#'>"+data.c[i]+"</a>";
+		cslb.appendChild(new_li)
+	}
+	for(i=0;i<zmlength;i++){
+		var new_li=document.createElement('li');
+		
+		if(i==26){
+			new_li.innerHTML="<a href='#'class='bold'>"+data.zm[i]+"</a>";zmlb.appendChild(new_li)
+		}else{
+			new_li.innerHTML="<a href='#'>"+data.zm[i]+"</a>";
+			zmlb.appendChild(new_li)
+		}
+	}
+	
+
+}
+
+</script>
+</html>

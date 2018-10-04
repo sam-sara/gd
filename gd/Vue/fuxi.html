@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+	</head>
+	<body>
+		<button id='btn'>{{mes}}</button>
+		<button id='btn2'v-bind:value='message'></button>
+		<button type="button" id='btn3'v-if='seen'>btn3</button>
+		<!-- 因为要在UL里创建符合源数据数量的LI，所以ID不能放在LI上要放在父元素上，父元素是DIV或UL.OL无所谓，
+		todo in todos items 是源数据数组并且 item 是数组元素迭代的别名。你也可以用 of 替代 in 作为分隔符，
+		因为它是最接近 JavaScript 迭代器的语法 -->
+		<div id="app-4">
+			<li v-for="todo of todos">
+			  {{ todo.text }}
+			</li>
+		 </div>
+
+	</body>
+		<script type="text/javascript">
+			var btn_1=new Vue({
+				el:'#btn',
+				data:{
+					mes:'hello darkest hour'
+				}
+			})
+			var btn_2=new Vue({
+				el:'#btn2',
+				data:{
+					 message: '页面加载于 ' + new Date().toLocaleString()
+				}
+			})
+			var btn_3=new Vue({
+				el:'#btn3',
+				data:{
+					seen:true
+				}
+			})
+			var app4 = new Vue({
+  el: '#app-4',
+  data: {
+    todos: [
+      { text: '学习 JavaScript' },
+      { text: '学习 Vue' },
+      { text: '整个牛项目' }
+    ]
+  }
+})
+		</script>
+</html>
